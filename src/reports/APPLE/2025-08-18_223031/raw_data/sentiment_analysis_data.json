@@ -1,0 +1,233 @@
+{
+  "ticker": "APPLE",
+  "company_info": {
+    "company_name": "APPLE",
+    "ticker": "APPLE",
+    "sector": "N/A",
+    "industry": "N/A"
+  },
+  "news_analysis": {
+    "articles": [
+      {
+        "title": "Investor Relations - Apple",
+        "snippet": "FY 25 Third Quarter Results Apple announced results and business updates for the quarter ended June 28, 2025.",
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple reports third quarter results",
+        "snippet": "The Company posted quarterly revenue of $94.0 billion, up 10 percent year over year, and quarterly diluted earnings per share of $1.57, up 12 ...",
+        "url": "https://www.apple.com/newsroom/2025/07/apple-reports-third-quarter-results/",
+        "sentiment_score": 0.148,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Income Statement - Yahoo Finance",
+        "snippet": "Get the detailed quarterly/annual income statement for Apple Inc. (AAPL). Find out the revenue, expenses and profit or loss over the last fiscal year.",
+        "url": "https://finance.yahoo.com/quote/AAPL/financials/",
+        "sentiment_score": 0.17655,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple reports biggest revenue growth since December 2021 - CNBC",
+        "snippet": "The company reported $1.57 in earnings per share or $24.43 billion of net income during the quarter, versus $1.40 per share or $21.45 billion ...",
+        "url": "https://www.cnbc.com/2025/07/31/apple-aapl-q3-earnings-report-2025.html",
+        "sentiment_score": 0.3592,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple reports record Q1 2025 earnings with $124.30 billion in revenue",
+        "snippet": "Apple has released its earnings report for fiscal Q1 2025. The company reports $124.30 billion in revenue during the three-month period.",
+        "url": "https://www.reddit.com/r/apple/comments/1idy9vf/apple_reports_record_q1_2025_earnings_with_12430/",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple (AAPL) Earnings Report Date - Nasdaq",
+        "snippet": "Find annual and quearterly earnings data for Apple Inc. Common Stock (AAPL) including earnings per share, earnings forecasts at Nasdaq.com.",
+        "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
+        "sentiment_score": -0.0020000000000000018,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Press release issued by Apple Inc. on October 28, 2021. - SEC.gov",
+        "snippet": "The Company posted a September quarter revenue record of $83.4 billion, up 29 percent year over year, and quarterly earnings per diluted share of $1.24.",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019321000104/a8-kex991q4202109252021.htm",
+        "sentiment_score": 0.148,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple (AAPL) Earnings Dates, Call Summary & Reports - TipRanks",
+        "snippet": "Apple (AAPL) will release its next earnings report on Oct 22, 2025. Last qtr Apple reported \u2015 EPS in relation to $0.728 expected by the market.",
+        "url": "https://www.tipranks.com/stocks/aapl/earnings",
+        "sentiment_score": -0.016666666666666666,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple Revenue 2010-2025 | AAPL - Macrotrends",
+        "snippet": "Apple annual revenue for 2024 was $391.035B, a 2.02% increase from 2023. Apple annual revenue for 2023 was $383.285B, a 2.8% decline from 2022. Apple annual ...",
+        "url": "https://macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "sentiment_score": 0.1591,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple reports Q2 2025 earnings with $95.4 billion in revenue - Reddit",
+        "snippet": "Apple Q3 Earnings Preview: What to Expect \u00b7 Apple reports record Q1 2025 earnings with $124.30 billion in revenue \u00b7 Apple to release Q3 2025 ...",
+        "url": "https://www.reddit.com/r/apple/comments/1kcopjv/apple_reports_q2_2025_earnings_with_954_billion/",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple News+ - Apple",
+        "snippet": "Access top stories from over 400 leading publications. Get the latest news from local, national, and international titles.",
+        "url": "https://www.apple.com/apple-news/",
+        "sentiment_score": 0.22615000000000002,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple News Today - Podcast",
+        "snippet": "Get all the day's news in less than 15 minutes. Start your day with Apple News Today.",
+        "url": "https://podcasts.apple.com/us/podcast/apple-news-today/id1473872585",
+        "sentiment_score": -0.08333333333333333,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Newsroom - Apple",
+        "snippet": "Latest News ; Apple Arcade exclusive NFL Retro Bowl '26 launching September 4. August 12, 2025 ; Apple increases U.S. commitment to $600 billion, announces ...",
+        "url": "https://www.apple.com/newsroom/",
+        "sentiment_score": 0.48835,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple news - Today's latest updates",
+        "snippet": "Trump aims tariff threats at Apple. Trump tariff threats hits Apple, French winemakers. Trump pressures Apple to manufacture in US.",
+        "url": "https://www.cbsnews.com/tag/apple/",
+        "sentiment_score": -0.26725,
+        "sentiment_category": "negative",
+        "source": ""
+      },
+      {
+        "title": "AppleInsider: Apple News, Rumors, Reviews, Prices & Deals",
+        "snippet": "Core iPhone 18 rumored to shift to early 2027, 18 Pro still in 2026 \u00b7 New in iOS 26 beta 7: Blood oxygen measuring, adaptive power notifications \u00b7 Amazon ...",
+        "url": "https://appleinsider.com/",
+        "sentiment_score": 0.14804090909090908,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "MacRumors: Apple News and Rumors",
+        "snippet": "Every Apple Device That Leaked This Week \u00b7 A new HomePod mini with an S9 chip or newer \u00b7 A new Apple TV with an A17 Pro chip \u00b7 A new Studio Display with an A19 Pro ...",
+        "url": "https://www.macrumors.com/",
+        "sentiment_score": -0.09091818181818181,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple News Top Stories",
+        "snippet": "To view this channel, open the link on an iPhone or iPad with iOS 9 or later or a Mac with macOS 10.14 or later and Apple News. Learn more about Apple News.",
+        "url": "https://news.apple.com/TqT-jfrI0QXaYqGoz68HYeQ",
+        "sentiment_score": 0.20115,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "9to5Mac - Apple News & Mac Rumors Breaking All Day",
+        "snippet": "Apple is out with iOS 26 beta 7 and watchOS 26 beta 7 today for developers. Most notably, the updates include the redesigned Blood Oxygen ...",
+        "url": "https://9to5mac.com/",
+        "sentiment_score": 0.25,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Latest on the iPhone, iPad, Macbook, Apple TV, Operating Systems ...",
+        "snippet": "Business News \u00b7 Apple Watch getting redesigned blood oxygen feature following legal dispute \u00b7 Business News \u00b7 Musk threatens 'immediate' legal action against Apple ...",
+        "url": "https://www.nbcnews.com/tech/apple",
+        "sentiment_score": -0.15530000000000005,
+        "sentiment_category": "negative",
+        "source": ""
+      },
+      {
+        "title": "Apple News - Channel",
+        "snippet": "Top Shows ; Apple News Today. Daily News \u00b7 Updated Daily ; Apple News+ Narrated. News \u00b7 Updated Daily ; Apple News In Conversation. News Commentary \u00b7 Updated Weekly.",
+        "url": "https://podcasts.apple.com/us/channel/apple-news/id6442611283",
+        "sentiment_score": 0.16365000000000002,
+        "sentiment_category": "positive",
+        "source": ""
+      }
+    ],
+    "sentiment_scores": [
+      0.0,
+      0.148,
+      0.17655,
+      0.3592,
+      0.0,
+      -0.0020000000000000018,
+      0.148,
+      -0.016666666666666666,
+      0.1591,
+      0.0,
+      0.22615000000000002,
+      -0.08333333333333333,
+      0.48835,
+      -0.26725,
+      0.14804090909090908,
+      -0.09091818181818181,
+      0.20115,
+      0.25,
+      -0.15530000000000005,
+      0.16365000000000002
+    ],
+    "overall_sentiment": 0.09263613636363638,
+    "sentiment_distribution": {
+      "positive": 11,
+      "negative": 2,
+      "neutral": 7
+    }
+  },
+  "twitter_analysis": {
+    "error": "Twitter API not configured. Please add TWITTER_BEARER_TOKEN to .env file"
+  },
+  "combined_sentiment": {
+    "news_sentiment": 0.09263613636363638,
+    "twitter_sentiment": 0,
+    "combined_sentiment": 0.09263613636363638,
+    "sentiment_confidence": 0.7,
+    "sentiment_category": "neutral",
+    "data_sources": {
+      "news_articles": 20,
+      "tweets_analyzed": 0
+    },
+    "sentiment_breakdown": {
+      "news_distribution": {
+        "positive": 11,
+        "negative": 2,
+        "neutral": 7
+      },
+      "twitter_distribution": {}
+    }
+  },
+  "analysis_summary": {
+    "overall_sentiment_score": 0.09263613636363638,
+    "sentiment_category": "neutral",
+    "confidence_level": 0.7,
+    "data_quality": {
+      "news_articles_analyzed": 20,
+      "tweets_analyzed": 0
+    },
+    "analysis_date": "2025-08-18 22:29:54"
+  }
+}

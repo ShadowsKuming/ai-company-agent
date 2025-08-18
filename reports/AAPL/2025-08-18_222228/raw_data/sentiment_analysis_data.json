@@ -1,0 +1,233 @@
+{
+  "ticker": "AAPL",
+  "company_info": {
+    "company_name": "Apple Inc.",
+    "ticker": "AAPL",
+    "sector": "Technology",
+    "industry": "Consumer Electronics"
+  },
+  "news_analysis": {
+    "articles": [
+      {
+        "title": "Investor Relations - Apple",
+        "snippet": "FY 25 Third Quarter Results. Apple announced results and business updates for the quarter ended June 28, 2025. View the press release \u00b7 Listen to the conference ...",
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple reports third quarter results",
+        "snippet": "The Company posted quarterly revenue of $94.0 billion, up 10 percent year over year, and quarterly diluted earnings per share of $1.57, up 12 ...",
+        "url": "https://www.apple.com/newsroom/2025/07/apple-reports-third-quarter-results/",
+        "sentiment_score": 0.148,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Income Statement - Yahoo Finance",
+        "snippet": "Get the detailed quarterly/annual income statement for Apple Inc. (AAPL). Find out the revenue, expenses and profit or loss over the last fiscal year.",
+        "url": "https://finance.yahoo.com/quote/AAPL/financials/",
+        "sentiment_score": 0.17655,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple (AAPL) Earnings Report Date",
+        "snippet": "Find annual and quearterly earnings data for Apple Inc. Common Stock (AAPL) ... Common Stock. $330.56. -5.02 -1.50% \u00b7 AAPL. Apple Inc. Common Stock. $231.59.",
+        "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
+        "sentiment_score": -0.15,
+        "sentiment_category": "negative",
+        "source": ""
+      },
+      {
+        "title": "Apple reports biggest revenue growth since December 2021",
+        "snippet": "The company reported $1.57 in earnings per share or $24.43 billion of net income during the quarter, versus $1.40 per share or $21.45 billion in ...",
+        "url": "https://www.cnbc.com/2025/07/31/apple-aapl-q3-earnings-report-2025.html",
+        "sentiment_score": 0.3592,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Analyst Ratings, Estimates & Forecasts",
+        "snippet": "See Apple Inc. (AAPL) stock analyst estimates, including earnings and revenue, EPS, upgrades and downgrades.",
+        "url": "https://finance.yahoo.com/quote/AAPL/analysis/",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Earnings Dates & Report",
+        "snippet": "Announce Date. 10/30/2025 (Post-Market) ; EPS Normalized Estimate. $1.76 ; EPS GAAP Estimate. $1.76 ; Revenue Estimate. $101.46B ; EPS Revisions (Last 90 Days)*. 20 ...",
+        "url": "https://seekingalpha.com/symbol/AAPL/earnings",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "AAPL Stock | Apple Inc Price, Quote, News & Analysis",
+        "snippet": "EarningsRevenue grew 10% YoY, mainly driven by growth in iPhone (+14% YoY) and Services (+13% YoY). \u00b7 InvestmentsApple committed to invest $600 billion in the ...",
+        "url": "https://www.tipranks.com/stocks/aapl",
+        "sentiment_score": 0.3692833333333333,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple (AAPL) Earnings Dates & Reports",
+        "snippet": "Apple reported Q3 2025 revenue of $94B (+10% YoY) and EPS of $1.57, beating forecasts by 5.66% and 10.56% respectively \u00b7 Services revenue grew 13% to $27.4B, ...",
+        "url": "https://www.investing.com/equities/apple-computer-inc-earnings",
+        "sentiment_score": -0.07655,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Apple Revenue 2010-2025 | AAPL",
+        "snippet": "Apple revenue for the twelve months ending March 31, 2025 was $400.366B, a 4.91% increase year-over-year. Apple annual revenue for 2024 was $391.035B, a 2.02% ...",
+        "url": "https://macrotrends.net/stocks/charts/AAPL/apple/revenue",
+        "sentiment_score": 0.1591,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Newsroom - Apple",
+        "snippet": "Latest News ; Apple Arcade exclusive NFL Retro Bowl '26 launching September 4. August 12, 2025 ; Apple increases U.S. commitment to $600 billion, announces ...",
+        "url": "https://www.apple.com/newsroom/",
+        "sentiment_score": 0.48835,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Latest Stock News & Headlines",
+        "snippet": "Apple Expects $1.1 Billion Tariff Hit in 4th Quarter After $800 Million Q3 Hit; CEO Tim Cook Warns 'Many Factors That Could Change'. Barchart \u2022 7 hours ago.",
+        "url": "https://finance.yahoo.com/quote/AAPL/news/",
+        "sentiment_score": 0.19865,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Company News - Newsroom",
+        "snippet": "PRESS RELEASE. Apple increases U.S. commitment to $600 billion, announces ambitious program \u00b7 PRESS RELEASE. Apple, Corning to manufacture all iPhone, Apple ...",
+        "url": "https://www.apple.com/newsroom/topics/company-news/",
+        "sentiment_score": 0.4704,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "AAPL: Apple Inc - Stock Price, Quote and News",
+        "snippet": "Get Apple Inc (AAPL:NASDAQ) real-time stock quotes, news, price and financial information from CNBC.",
+        "url": "https://www.cnbc.com/quotes/AAPL",
+        "sentiment_score": 0.0,
+        "sentiment_category": "neutral",
+        "source": ""
+      },
+      {
+        "title": "Latest on the iPhone, iPad, Macbook, Apple TV, Operating ...",
+        "snippet": "Business News \u00b7 Apple Watch getting redesigned blood oxygen feature following legal dispute \u00b7 Business News \u00b7 Musk threatens 'immediate' legal action against Apple ...",
+        "url": "https://www.nbcnews.com/tech/apple",
+        "sentiment_score": -0.15530000000000005,
+        "sentiment_category": "negative",
+        "source": ""
+      },
+      {
+        "title": "Apple Inc. (AAPL) Latest Press Releases & Corporate News",
+        "snippet": "Get the latest Apple Inc. (AAPL) stock news and headlines to help you in your trading and investing decisions.",
+        "url": "https://finance.yahoo.com/quote/AAPL/press-releases/",
+        "sentiment_score": 0.36761666666666665,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "AppleInsider: Apple News, Rumors, Reviews, Prices & Deals",
+        "snippet": "Core iPhone 18 rumored to shift to early 2027, 18 Pro still in 2026 \u00b7 More high-profile retirements expected soon at Apple \u00b7 Amazon discounts M4 Mac mini to $499 ...",
+        "url": "https://appleinsider.com/",
+        "sentiment_score": 0.17228333333333334,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Investor Relations - Apple",
+        "snippet": "Apple increases U.S. commitment to $600 billion, announces ambitious program. Apple announced a new $100 billion commitment to America, a significant ...",
+        "url": "https://investor.apple.com/investor-relations/default.aspx",
+        "sentiment_score": 0.5489939393939394,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple (AAPL) News Headlines",
+        "snippet": "Stay up-to-date on Apple Inc. Common Stock (AAPL) news with the latest updates, breaking headlines, news articles, and more from around the web at ...",
+        "url": "https://www.nasdaq.com/market-activity/stocks/aapl/news-headlines",
+        "sentiment_score": 0.11666666666666665,
+        "sentiment_category": "positive",
+        "source": ""
+      },
+      {
+        "title": "Apple - BBC News",
+        "snippet": "Apple to invest $100bn after pressure from Trump. The president had been pressing Apple to do more of its manufacturing in the US. 6 Aug 2025.",
+        "url": "https://www.bbc.com/news/topics/crr7mlg0gqqt",
+        "sentiment_score": 0.10200000000000001,
+        "sentiment_category": "positive",
+        "source": ""
+      }
+    ],
+    "sentiment_scores": [
+      0.0,
+      0.148,
+      0.17655,
+      -0.15,
+      0.3592,
+      0.0,
+      0.0,
+      0.3692833333333333,
+      -0.07655,
+      0.1591,
+      0.48835,
+      0.19865,
+      0.4704,
+      0.0,
+      -0.15530000000000005,
+      0.36761666666666665,
+      0.17228333333333334,
+      0.5489939393939394,
+      0.11666666666666665,
+      0.10200000000000001
+    ],
+    "overall_sentiment": 0.16476219696969696,
+    "sentiment_distribution": {
+      "positive": 13,
+      "negative": 2,
+      "neutral": 5
+    }
+  },
+  "twitter_analysis": {
+    "error": "Twitter API not configured. Please add TWITTER_BEARER_TOKEN to .env file"
+  },
+  "combined_sentiment": {
+    "news_sentiment": 0.16476219696969696,
+    "twitter_sentiment": 0,
+    "combined_sentiment": 0.16476219696969696,
+    "sentiment_confidence": 0.7,
+    "sentiment_category": "positive",
+    "data_sources": {
+      "news_articles": 20,
+      "tweets_analyzed": 0
+    },
+    "sentiment_breakdown": {
+      "news_distribution": {
+        "positive": 13,
+        "negative": 2,
+        "neutral": 5
+      },
+      "twitter_distribution": {}
+    }
+  },
+  "analysis_summary": {
+    "overall_sentiment_score": 0.16476219696969696,
+    "sentiment_category": "positive",
+    "confidence_level": 0.7,
+    "data_quality": {
+      "news_articles_analyzed": 20,
+      "tweets_analyzed": 0
+    },
+    "analysis_date": "2025-08-18 22:21:20"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ticker": "APPLE",
+  "company_info": {
+    "company_name": "APPLE",
+    "ceo_name": "N/A",
+    "executives": [],
+    "sector": "N/A",
+    "industry": "N/A",
+    "employee_count": "N/A"
+  },
+  "ceo_background": {},
+  "leadership_analysis": {},
+  "error": "CEO information not available"
+}

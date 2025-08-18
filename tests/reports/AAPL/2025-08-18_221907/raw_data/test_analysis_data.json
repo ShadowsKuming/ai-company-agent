@@ -1,0 +1,19 @@
+{
+  "ticker": "AAPL",
+  "company_info": {
+    "company_name": "Apple Inc.",
+    "sector": "Technology"
+  },
+  "cash_flow_analysis": {
+    "analysis_summary": {
+      "future_focus_score": 8.5,
+      "company_name": "Apple Inc."
+    }
+  },
+  "sentiment_analysis": {
+    "analysis_summary": {
+      "overall_sentiment_score": 0.3,
+      "sentiment_category": "positive"
+    }
+  }
+}

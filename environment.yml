@@ -1,0 +1,37 @@
+name: ai-company-agent
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pip
+  - black
+  - ruff
+  - mypy
+  - pytest
+  - pip:
+      - pydantic
+      - python-dotenv
+      - typer
+      - rich
+      - smolagents
+      - google-generativeai
+      - openai
+      - langchain
+      - langgraph
+      - yfinance
+      - requests
+      - beautifulsoup4
+      - tweepy
+      - newsapi-python
+      - google-search-results
+      - plotly
+      - seaborn
+      - asyncio
+      - aiohttp
+      - textblob
+      - vaderSentiment
