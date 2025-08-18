@@ -182,6 +182,7 @@ cython_debug/
 
 #claude 
 .claude/
+nul
 
 #analysis output
 reports/*
