@@ -39,11 +39,11 @@ def analyze_company(
     # Convert company name to ticker if needed (simple heuristic)
     ticker = company.upper()
     if len(ticker) > 5:
-        console.print(f"[yellow]⚠️  '{company}' looks like a company name. Please use the ticker symbol instead (e.g., AAPL for Apple).[/yellow]")
+        console.print(f"[yellow]WARNING: '{company}' looks like a company name. Please use the ticker symbol instead (e.g., AAPL for Apple).[/yellow]")
         return
     
     console.print(Panel(
-        f"[bold green]🚀 Starting Analysis for {ticker}[/bold green]\n"
+        f"[bold green]Starting Analysis for {ticker}[/bold green]\n"
         f"[cyan]LLM: {llm.upper()}[/cyan]\n"
         f"[cyan]Investment Recommendation: {'Yes' if recommend else 'No'}[/cyan]\n"
         f"[cyan]Cache Strategy: {'Force New' if force_new else 'Use Cache (15 days)'}[/cyan]",
@@ -68,10 +68,10 @@ def analyze_company(
             console.print("\n" + "="*60)
             if is_cached:
                 cache_age = analysis_result.get('cache_age_days', 0)
-                console.print(f"[bold blue]📋 Using Cached Analysis for {ticker}[/bold blue]")
+                console.print(f"[bold blue]Using Cached Analysis for {ticker}[/bold blue]")
                 console.print(f"[dim]Cache age: {cache_age} days old[/dim]")
             else:
-                console.print(f"[bold green]✅ Analysis Complete for {ticker}[/bold green]")
+                console.print(f"[bold green]Analysis Complete for {ticker}[/bold green]")
                 console.print(f"[dim]Analysis time: {analysis_time:.1f} seconds[/dim]")
             
             # Display key scores
@@ -88,19 +88,19 @@ def analyze_company(
             # Display file locations
             report_files = analysis_result.get('report_files', {})
             if 'report_file' in report_files:
-                console.print(f"\n[bold]📄 Reports saved to:[/bold]")
-                console.print(f"  📊 Full Report: [green]{report_files['report_file']}[/green]")
-                console.print(f"  📁 Data Folder: [green]{report_files.get('ticker_folder', 'N/A')}[/green]")
+                console.print(f"\n[bold]Reports saved to:[/bold]")
+                console.print(f"  Full Report: [green]{report_files['report_file']}[/green]")
+                console.print(f"  Data Folder: [green]{report_files.get('ticker_folder', 'N/A')}[/green]")
             
         else:
             error_msg = analysis_result['error']
-            console.print(f"[red]❌ Analysis failed: {error_msg}[/red]")
+            console.print(f"[red]ERROR: Analysis failed: {error_msg}[/red]")
             
             # Provide helpful suggestions for common errors
             if 'Invalid ticker' in error_msg or 'no company information found' in error_msg:
-                console.print(f"[yellow]💡 Suggestion: Make sure '{ticker}' is a valid stock ticker symbol (e.g., AAPL for Apple, GOOGL for Google)[/yellow]")
+                console.print(f"[yellow]SUGGESTION: Make sure '{ticker}' is a valid stock ticker symbol (e.g., AAPL for Apple, GOOGL for Google)[/yellow]")
             elif 'No financial data available' in error_msg:
-                console.print(f"[yellow]💡 Suggestion: This ticker may be valid but lacks financial data. Try a larger public company.[/yellow]")
+                console.print(f"[yellow]SUGGESTION: This ticker may be valid but lacks financial data. Try a larger public company.[/yellow]")
             
             return
         

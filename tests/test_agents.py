@@ -355,9 +355,9 @@ class AgentsTester:
     
     def run_all_tests(self):
         """Run all agent tests"""
-        print("🚀 Starting Agents Functionality Tests")
-        print(f"🎯 Test ticker: {self.test_ticker}")
-        print(f"⏰ Timeout per test: {self.test_timeout}s")
+        print("[AGENTS] Starting Agents Functionality Tests")
+        print(f"[TARGET] Test ticker: {self.test_ticker}")
+        print(f"[TIMEOUT] Timeout per test: {self.test_timeout}s")
         print("=" * 60)
         
         # Test TickerAnalyzer with both LLMs

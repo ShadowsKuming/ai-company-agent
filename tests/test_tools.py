@@ -95,7 +95,7 @@ class ToolsTester:
             
         except Exception as e:
             self.results['cash_flow_analyzer'] = {'status': 'failed', 'error': str(e)}
-            print(f"   ❌ Exception: {str(e)}")
+            print(f"   [FAIL] Exception: {str(e)}")
     
     def test_profit_analyzer(self):
         """Test ProfitAnalyzer tool"""

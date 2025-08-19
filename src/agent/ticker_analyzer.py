@@ -245,8 +245,8 @@ class TickerAnalyzerAgent:
         analysis_results['analysis_duration'] = f"{total_time:.2f} seconds"
         
         print("\n" + "=" * 60)
-        print(f"🎯 Analysis completed in {total_time:.2f} seconds")
-        print(f"📁 Results saved in: reports/{ticker.upper()}/")
+        print(f"[COMPLETE] Analysis completed in {total_time:.2f} seconds")
+        print(f"[SAVED] Results saved in: reports/{ticker.upper()}/")
         
         return analysis_results
     

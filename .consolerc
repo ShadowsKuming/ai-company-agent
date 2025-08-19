@@ -1,0 +1,9 @@
+# Console Configuration
+# Set to true to use ASCII replacements for Unicode characters
+USE_ASCII_ONLY=true
+
+# Platform-specific settings
+WINDOWS_SAFE_MODE=auto
+
+# Emoji replacement mode: ascii, unicode, auto
+EMOJI_MODE=auto
