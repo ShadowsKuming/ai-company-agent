@@ -7,31 +7,57 @@ dependencies:
   - numpy
   - pandas
   - matplotlib
+  - plotly
   - scikit-learn
   - pip
   - black
   - ruff
   - mypy
   - pytest
+  - networkx
   - pip:
+      # Core dependencies
       - pydantic
       - python-dotenv
       - typer
       - rich
+      
+      # AI/LLM dependencies
       - smolagents
       - google-generativeai
       - openai
       - langchain
-      - langgraph
+      - langchain-core
+      - langgraph>=0.0.40
+      
+      # RAG and Vector Store dependencies
+      - sentence-transformers>=2.2.2
+      - faiss-cpu>=1.7.4
+      - transformers>=4.21.0
+      
+      # Financial data and web scraping
       - yfinance
       - requests
       - beautifulsoup4
+      - lxml
+      
+      # Social media and news APIs
       - tweepy
       - newsapi-python
       - google-search-results
-      - plotly
+      
+      # Data visualization (enhanced)
       - seaborn
-      - asyncio
+      
+      # Async and HTTP
       - aiohttp
+      
+      # Text processing and sentiment
       - textblob
       - vaderSentiment
+      
+      # Additional utilities
+      - appdirs
+      - multitasking
+      - frozendict
+      - html5lib
