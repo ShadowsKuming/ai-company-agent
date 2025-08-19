@@ -120,17 +120,48 @@ class TickerAnalyzerAgent:
             'analysis_status': {}
         }
         
+        # 0. Pre-validation: Check if ticker is valid
+        print("[VALIDATION] Validating ticker and basic data availability...")
+        try:
+            test_financial_data = self.cash_flow_analyzer.get_financial_data(ticker)
+            if 'error' in test_financial_data:
+                print(f"   [CRITICAL] {test_financial_data['error']}")
+                print(f"   [STOP] Cannot proceed with analysis - invalid ticker or no data available")
+                return {
+                    'ticker': ticker.upper(),
+                    'error': test_financial_data['error'],
+                    'analysis_timestamp': datetime.now().isoformat(),
+                    'analysis_status': 'failed_validation'
+                }
+            print(f"   [OK] Ticker validation successful")
+        except Exception as e:
+            error_msg = f"Ticker validation failed: {str(e)}"
+            print(f"   [CRITICAL] {error_msg}")
+            return {
+                'ticker': ticker.upper(),
+                'error': error_msg,
+                'analysis_timestamp': datetime.now().isoformat(),
+                'analysis_status': 'failed_validation'
+            }
+        
         # 1. Cash Flow Analysis
         print("[CASH_FLOW] Running cash flow analysis...")
         try:
             cash_flow_result = self.cash_flow_analyzer.analyze_cash_flow(ticker)
-            analysis_results['cash_flow_analysis'] = cash_flow_result
-            analysis_results['analysis_status']['cash_flow'] = 'completed'
             
-            if 'analysis_summary' in cash_flow_result:
-                analysis_results['company_info'].update(cash_flow_result['analysis_summary'])
-            
-            print(f"   [OK] Cash flow analysis completed")
+            # Check if cash flow analysis failed
+            if 'error' in cash_flow_result:
+                print(f"   [FAIL] Cash flow analysis failed: {cash_flow_result['error']}")
+                analysis_results['analysis_status']['cash_flow'] = f"failed: {cash_flow_result['error']}"
+                # Don't return early here since other analyses might still work
+            else:
+                analysis_results['cash_flow_analysis'] = cash_flow_result
+                analysis_results['analysis_status']['cash_flow'] = 'completed'
+                
+                if 'analysis_summary' in cash_flow_result:
+                    analysis_results['company_info'].update(cash_flow_result['analysis_summary'])
+                
+                print(f"   [OK] Cash flow analysis completed")
             
         except Exception as e:
             print(f"   [FAIL] Cash flow analysis failed: {e}")

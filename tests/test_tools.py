@@ -276,12 +276,18 @@ class ToolsTester:
         print("[REPORT] Testing Report Generator...")
         
         try:
-            generator = ReportGenerator()
+            # Use test-specific reports folder
+            import os
+            test_dir = os.path.dirname(__file__)
+            test_reports_dir = os.path.join(test_dir, "test_reports")
+            generator = ReportGenerator(base_reports_dir=test_reports_dir)
             
-            # Test folder creation
+            # Test folder creation with test-specific naming
             print("   Testing ticker folder creation...")
-            folder_path = generator.create_ticker_folder(self.test_ticker)
-            print(f"   ✅ Folder created: {folder_path}")
+            test_name = "test_tools"
+            analysis_date = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+            folder_path = generator.create_ticker_folder(f"{test_name}_{self.test_ticker}", analysis_date)
+            print(f"   [OK] Folder created: {folder_path}")
             
             # Test with sample analysis data
             print("   Testing report generation with sample data...")
@@ -307,30 +313,31 @@ class ToolsTester:
             
             # Test raw data saving
             print("   Testing raw data saving...")
-            raw_file = generator.save_raw_data(self.test_ticker, 'test_analysis', sample_data)
-            print(f"   ✅ Raw data saved: {os.path.basename(raw_file)}")
+            test_ticker = f"{test_name}_{self.test_ticker}"
+            raw_file = generator.save_raw_data(test_ticker, 'test_analysis', sample_data, folder_path)
+            print(f"   [OK] Raw data saved: {os.path.basename(raw_file)}")
             
             # Test markdown report generation
             print("   Testing markdown report generation...")
-            report_file = generator.generate_markdown_report(self.test_ticker, sample_data)
-            print(f"   ✅ Markdown report generated: {os.path.basename(report_file)}")
+            report_file = generator.generate_markdown_report(test_ticker, sample_data, folder_path)
+            print(f"   [OK] Markdown report generated: {os.path.basename(report_file)}")
             
             # Test complete report generation
             print("   Testing complete report generation...")
-            complete_result = generator.generate_complete_report(self.test_ticker, sample_data)
+            complete_result = generator.generate_complete_report(test_ticker, sample_data, folder_path)
             
             if 'error' in complete_result:
                 self.results['report_generator'] = {'status': 'partial', 'error': complete_result['error']}
-                print(f"   ⚠️  Partial success: {complete_result['error']}")
+                print(f"   [WARN] Partial success: {complete_result['error']}")
             else:
                 self.results['report_generator'] = {'status': 'working', 'error': None}
-                print(f"   ✅ Complete report generation successful")
+                print(f"   [OK] Complete report generation successful")
                 print(f"      Report file: {os.path.basename(complete_result.get('report_file', 'N/A'))}")
                 print(f"      Raw data files: {len(complete_result.get('raw_data_files', {}))}")
             
         except Exception as e:
             self.results['report_generator'] = {'status': 'failed', 'error': str(e)}
-            print(f"   ❌ Exception: {str(e)}")
+            print(f"   [FAIL] Exception: {str(e)}")
     
     def run_all_tests(self):
         """Run all tool tests"""

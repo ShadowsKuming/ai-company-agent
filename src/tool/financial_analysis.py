@@ -16,13 +16,36 @@ class CashFlowAnalyzer:
         try:
             stock = yf.Ticker(ticker)
             
+            # Get basic info first to validate ticker
+            info = stock.info
+            
+            # Validate that we got actual company data
+            if not info or len(info) < 10:
+                return {'error': f"Invalid ticker '{ticker}' - no company information found"}
+            
+            # Check for essential company fields
+            company_name = info.get('longName') or info.get('shortName')
+            if not company_name:
+                return {'error': f"Invalid ticker '{ticker}' - no company name found"}
+            
+            print(f"   [OK] Found company: {company_name}")
+            
             # Get financial statements
             income_stmt = stock.financials
             balance_sheet = stock.balance_sheet
             cash_flow = stock.cashflow
             
-            # Get basic info
-            info = stock.info
+            # Validate that we have at least some financial data
+            has_financial_data = (
+                not income_stmt.empty or 
+                not balance_sheet.empty or 
+                not cash_flow.empty
+            )
+            
+            if not has_financial_data:
+                return {'error': f"No financial data available for '{ticker}'"}
+            
+            print(f"   [OK] Financial data retrieved successfully")
             
             return {
                 'income_statement': income_stmt.to_dict() if not income_stmt.empty else {},
@@ -32,7 +55,7 @@ class CashFlowAnalyzer:
                 'ticker': ticker
             }
         except Exception as e:
-            return {'error': f"Failed to fetch financial data: {str(e)}"}
+            return {'error': f"Failed to fetch financial data for '{ticker}': {str(e)}"}
     
     def analyze_revenue_streams(self, financial_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze how the company makes money"""

@@ -29,8 +29,8 @@ class MasterTestRunner:
     def run_test_file(self, test_file, description):
         """Run a single test file and capture results"""
         print(f"\n{'='*60}")
-        print(f"🧪 Running {description}")
-        print(f"📁 File: {test_file}")
+        print(f"[RUNNING] Running {description}")
+        print(f"[FILE] File: {test_file}")
         print(f"{'='*60}")
         
         test_path = os.path.join('tests', test_file)
@@ -42,7 +42,7 @@ class MasterTestRunner:
                 'error': f'Test file {test_path} not found',
                 'duration': 0
             }
-            print(f"❌ Test file missing: {test_path}")
+            print(f"[MISSING] Test file missing: {test_path}")
             return
         
         try:
@@ -68,9 +68,9 @@ class MasterTestRunner:
             }
             
             if result.returncode == 0:
-                print(f"✅ {description} - PASSED ({duration:.1f}s)")
+                print(f"[PASS] {description} - PASSED ({duration:.1f}s)")
             else:
-                print(f"❌ {description} - FAILED ({duration:.1f}s)")
+                print(f"[FAIL] {description} - FAILED ({duration:.1f}s)")
                 print(f"Exit code: {result.returncode}")
                 
                 # Show last few lines of output for debugging
@@ -94,7 +94,7 @@ class MasterTestRunner:
                 'duration': duration,
                 'error': f'Test timed out after {duration:.1f} seconds'
             }
-            print(f"⏰ {description} - TIMEOUT ({duration:.1f}s)")
+            print(f"[TIMEOUT] {description} - TIMEOUT ({duration:.1f}s)")
             
         except Exception as e:
             duration = time.time() - start_time
@@ -104,16 +104,16 @@ class MasterTestRunner:
                 'duration': duration,
                 'error': str(e)
             }
-            print(f"💥 {description} - ERROR: {str(e)}")
+            print(f"[ERROR] {description} - ERROR: {str(e)}")
     
     def generate_health_report(self):
         """Generate comprehensive system health report"""
         total_duration = time.time() - self.start_time
         
         print(f"\n{'='*80}")
-        print(f"🏥 SYSTEM HEALTH REPORT")
-        print(f"📅 Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"⏱️  Total test duration: {total_duration:.1f}s")
+        print(f"[HEALTH_REPORT] SYSTEM HEALTH REPORT")
+        print(f"[GENERATED] Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"[DURATION] Total test duration: {total_duration:.1f}s")
         print(f"{'='*80}")
         
         # Count results
@@ -124,14 +124,14 @@ class MasterTestRunner:
         missing = sum(1 for r in self.test_results.values() if r['status'] == 'missing')
         total = len(self.test_results)
         
-        print(f"\n📊 TEST SUITE RESULTS:")
-        print(f"  ✅ Passed: {passed}/{total}")
-        print(f"  ❌ Failed: {failed}/{total}")
-        print(f"  ⏰ Timeout: {timeout}/{total}")
-        print(f"  💥 Error: {error}/{total}")
-        print(f"  📁 Missing: {missing}/{total}")
+        print(f"\n[RESULTS] TEST SUITE RESULTS:")
+        print(f"  [PASS] Passed: {passed}/{total}")
+        print(f"  [FAIL] Failed: {failed}/{total}")
+        print(f"  [TIMEOUT] Timeout: {timeout}/{total}")
+        print(f"  [ERROR] Error: {error}/{total}")
+        print(f"  [MISSING] Missing: {missing}/{total}")
         
-        print(f"\n📋 DETAILED RESULTS:")
+        print(f"\n[DETAILS] DETAILED RESULTS:")
         print("-" * 80)
         
         for test_file, result in self.test_results.items():
@@ -140,12 +140,12 @@ class MasterTestRunner:
             duration = result.get('duration', 0)
             
             status_icon = {
-                'passed': '✅',
-                'failed': '❌',
-                'timeout': '⏰',
-                'error': '💥',
-                'missing': '📁'
-            }.get(status, '❓')
+                'passed': '[PASS]',
+                'failed': '[FAIL]',
+                'timeout': '[TIMEOUT]',
+                'error': '[ERROR]',
+                'missing': '[MISSING]'
+            }.get(status, '[UNKNOWN]')
             
             print(f"{status_icon} {description}")
             print(f"   File: {test_file}")
@@ -160,52 +160,52 @@ class MasterTestRunner:
             print()
         
         # System health assessment
-        print("🔍 SYSTEM HEALTH ASSESSMENT:")
+        print("[ASSESSMENT] SYSTEM HEALTH ASSESSMENT:")
         print("-" * 40)
         
         if passed == total:
             health_status = "EXCELLENT"
-            health_color = "🟢"
+            health_color = "[EXCELLENT]"
             health_desc = "All systems operational"
         elif passed >= total * 0.75:
             health_status = "GOOD"
-            health_color = "🟡"
+            health_color = "[GOOD]"
             health_desc = "Most systems working, minor issues"
         elif passed >= total * 0.5:
             health_status = "FAIR"
-            health_color = "🟠"
+            health_color = "[FAIR]"
             health_desc = "Core systems working, some components failing"
         else:
             health_status = "POOR"
-            health_color = "🔴"
+            health_color = "[POOR]"
             health_desc = "Major system issues detected"
         
         print(f"{health_color} Overall Health: {health_status}")
         print(f"   Assessment: {health_desc}")
         
         # Specific recommendations
-        print(f"\n💡 RECOMMENDATIONS:")
+        print(f"\n[RECOMMENDATIONS] RECOMMENDATIONS:")
         
         if 'test_apis.py' in self.test_results and self.test_results['test_apis.py']['status'] != 'passed':
-            print("  🔑 Check API keys in .env file - required for system functionality")
+            print("  [API_KEYS] Check API keys in .env file - required for system functionality")
         
         if 'test_llm.py' in self.test_results and self.test_results['test_llm.py']['status'] != 'passed':
-            print("  🤖 LLM connectivity issues - verify Gemini/OpenAI API keys")
+            print("  [LLM_ISSUE] LLM connectivity issues - verify Gemini/OpenAI API keys")
         
         if 'test_tools.py' in self.test_results and self.test_results['test_tools.py']['status'] != 'passed':
-            print("  🔧 Tools having issues - check dependencies and API access")
+            print("  [TOOLS_ISSUE] Tools having issues - check dependencies and API access")
         
         if 'test_agents.py' in self.test_results and self.test_results['test_agents.py']['status'] != 'passed':
-            print("  🤝 Agent integration issues - verify previous components work")
+            print("  [AGENT_ISSUE] Agent integration issues - verify previous components work")
         
         if timeout > 0:
-            print("  ⏰ Some tests timed out - consider checking network connectivity")
+            print("  [TIMEOUT_ISSUE] Some tests timed out - consider checking network connectivity")
         
         if missing > 0:
-            print("  📁 Missing test files - ensure you're running from project root")
+            print("  [MISSING_FILES] Missing test files - ensure you're running from project root")
         
         # Ready to use assessment
-        print(f"\n🚀 READINESS ASSESSMENT:")
+        print(f"\n[READINESS] READINESS ASSESSMENT:")
         
         critical_tests = ['test_apis.py', 'test_llm.py']
         critical_passed = sum(
@@ -214,22 +214,22 @@ class MasterTestRunner:
         )
         
         if critical_passed == len(critical_tests):
-            print("  ✅ System ready for production use")
-            print("  ✅ All critical components functional")
+            print("  [READY] System ready for production use")
+            print("  [READY] All critical components functional")
         elif critical_passed > 0:
-            print("  ⚠️  System partially ready - some limitations expected")
-            print("  ⚠️  Fix critical issues before full deployment")
+            print("  [PARTIAL] System partially ready - some limitations expected")
+            print("  [PARTIAL] Fix critical issues before full deployment")
         else:
-            print("  ❌ System not ready - critical issues must be resolved")
-            print("  ❌ Cannot proceed without fixing API/LLM connectivity")
+            print("  [NOT_READY] System not ready - critical issues must be resolved")
+            print("  [NOT_READY] Cannot proceed without fixing API/LLM connectivity")
         
         return health_status.lower()
     
     def run_all_tests(self):
         """Run all test suites"""
-        print("🚀 AI TICKER ANALYZER - COMPREHENSIVE TEST SUITE")
-        print(f"📅 Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"🧪 Running {len(TEST_FILES)} test suites...")
+        print("[MASTER_TEST] AI TICKER ANALYZER - COMPREHENSIVE TEST SUITE")
+        print(f"[START_TIME] Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"[TEST_COUNT] Running {len(TEST_FILES)} test suites...")
         
         for test_file, description in TEST_FILES:
             self.run_test_file(test_file, description)
@@ -238,13 +238,13 @@ class MasterTestRunner:
         
         # Return appropriate exit code
         if health_status in ['excellent', 'good']:
-            print(f"\n🎉 ALL TESTS COMPLETED - SYSTEM HEALTHY")
+            print(f"\n[SUCCESS] ALL TESTS COMPLETED - SYSTEM HEALTHY")
             return 0
         elif health_status == 'fair':
-            print(f"\n⚠️  TESTS COMPLETED WITH WARNINGS")
+            print(f"\n[WARNINGS] TESTS COMPLETED WITH WARNINGS")
             return 1
         else:
-            print(f"\n❌ TESTS COMPLETED - CRITICAL ISSUES DETECTED")
+            print(f"\n[CRITICAL] TESTS COMPLETED - CRITICAL ISSUES DETECTED")
             return 2
 
 
@@ -255,7 +255,7 @@ def main():
     project_root = os.path.dirname(script_dir)
     os.chdir(project_root)
     
-    print(f"📁 Working directory: {os.getcwd()}")
+    print(f"[WORKING_DIR] Working directory: {os.getcwd()}")
     
     runner = MasterTestRunner()
     exit_code = runner.run_all_tests()

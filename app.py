@@ -8,7 +8,7 @@ import time
 # Add current directory to path for imports
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import our agents
 from src.agent.ticker_analyzer import TickerAnalyzerAgent, analyze_ticker
@@ -93,7 +93,15 @@ def analyze_company(
                 console.print(f"  📁 Data Folder: [green]{report_files.get('ticker_folder', 'N/A')}[/green]")
             
         else:
-            console.print(f"[red]❌ Analysis failed: {analysis_result['error']}[/red]")
+            error_msg = analysis_result['error']
+            console.print(f"[red]❌ Analysis failed: {error_msg}[/red]")
+            
+            # Provide helpful suggestions for common errors
+            if 'Invalid ticker' in error_msg or 'no company information found' in error_msg:
+                console.print(f"[yellow]💡 Suggestion: Make sure '{ticker}' is a valid stock ticker symbol (e.g., AAPL for Apple, GOOGL for Google)[/yellow]")
+            elif 'No financial data available' in error_msg:
+                console.print(f"[yellow]💡 Suggestion: This ticker may be valid but lacks financial data. Try a larger public company.[/yellow]")
+            
             return
         
         # Generate investment recommendation if requested
