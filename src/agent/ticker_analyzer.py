@@ -13,6 +13,16 @@ from src.tool.report_generator import ReportGenerator
 # Import LLM configuration
 from src.config import default_llm, llm_type, get_gemini_model, get_openai_model
 
+# Import RAG and workflow components
+from src.tool.RAG.vector_store import knowledge_store
+try:
+    from src.workflow.analysis_workflow import analysis_workflow
+    from src.workflow.visualization import workflow_visualizer
+    WORKFLOW_AVAILABLE = True
+except ImportError:
+    WORKFLOW_AVAILABLE = False
+    print("[WARN] Workflow components not available")
+
 
 class TickerAnalyzerAgent:
     """Main agent that orchestrates comprehensive ticker analysis"""
@@ -49,6 +59,15 @@ class TickerAnalyzerAgent:
         self.sentiment_analyzer = SentimentAnalyzer()
         self.report_generator = ReportGenerator()
         
+        # RAG and workflow integration
+        self.knowledge_store = knowledge_store
+        if WORKFLOW_AVAILABLE:
+            self.workflow = analysis_workflow
+            self.visualizer = workflow_visualizer
+        else:
+            self.workflow = None
+            self.visualizer = None
+        
         print(f"[OK] Ticker Analyzer Agent initialized with {self.llm_type.upper()} LLM")
     
     def get_llm_analysis(self, prompt: str, data: Dict[str, Any]) -> str:
@@ -70,17 +89,46 @@ class TickerAnalyzerAgent:
         except Exception as e:
             return f"LLM analysis failed: {str(e)}"
     
-    def analyze_ticker_comprehensive(self, ticker: str, company_name: Optional[str] = None, force_new: bool = False) -> Dict[str, Any]:
+    def analyze_ticker_comprehensive(self, ticker: str, company_name: Optional[str] = None, force_new: bool = False, use_workflow: bool = True, use_rag: bool = True) -> Dict[str, Any]:
         """Run comprehensive analysis on a ticker symbol
         
         Args:
             ticker: Stock ticker symbol
             company_name: Optional company name
             force_new: If True, skip cache and run new analysis
+            use_workflow: Use LangGraph workflow for orchestration
+            use_rag: Use RAG enhancement for analysis context
         """
         
         print(f"\n[ANALYZE] Starting analysis for {ticker.upper()}")
+        print(f"[INFO] RAG Enhancement: {'ON' if use_rag else 'OFF'}")
+        print(f"[INFO] Workflow Mode: {'ON' if use_workflow and WORKFLOW_AVAILABLE else 'OFF'}")
         print("=" * 60)
+        
+        # Use workflow if available and requested
+        if use_workflow and WORKFLOW_AVAILABLE and self.workflow:
+            print("[WORKFLOW] Using LangGraph workflow for analysis")
+            try:
+                # Run async workflow
+                import asyncio
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                result = loop.run_until_complete(
+                    self.workflow.analyze_ticker_with_workflow(
+                        ticker, company_name, {'use_rag': use_rag}
+                    )
+                )
+                loop.close()
+                
+                # Generate visualization
+                if 'analysis_status' not in result or result.get('analysis_status') != 'failed':
+                    self._generate_workflow_visualization(result, ticker)
+                
+                return result
+                
+            except Exception as e:
+                print(f"[WARN] Workflow failed, falling back to sequential: {e}")
+                # Continue with sequential analysis
         
         # Check for recent analysis first (unless force_new is True)
         if not force_new:
@@ -203,10 +251,26 @@ class TickerAnalyzerAgent:
             print(f"   [FAIL] Technology analysis failed: {e}")
             analysis_results['analysis_status']['technology'] = f'failed: {e}'
         
-        # 5. Sentiment Analysis
+        # 5. Sentiment Analysis (with RAG enhancement)
         print("[SENTIMENT] Running market sentiment analysis...")
         try:
+            # Get RAG context if enabled
+            rag_context = ""
+            if use_rag:
+                rag_context = self.knowledge_store.get_context_for_analysis(
+                    "sentiment",
+                    analysis_results.get('company_info', {})
+                )
+                if rag_context:
+                    print("   [RAG] Enhanced with sentiment analysis knowledge")
+            
             sentiment_result = self.sentiment_analyzer.analyze_sentiment_complete(ticker)
+            
+            # Add RAG context to result
+            if rag_context and isinstance(sentiment_result, dict) and 'error' not in sentiment_result:
+                sentiment_result['rag_context'] = rag_context
+                sentiment_result['enhanced'] = True
+            
             analysis_results['sentiment_analysis'] = sentiment_result
             analysis_results['analysis_status']['sentiment'] = 'completed'
             print(f"   [OK] Sentiment analysis completed")
@@ -215,10 +279,20 @@ class TickerAnalyzerAgent:
             print(f"   [FAIL] Sentiment analysis failed: {e}")
             analysis_results['analysis_status']['sentiment'] = f'failed: {e}'
         
-        # 6. Generate LLM Insights
+        # 6. Generate LLM Insights (with RAG enhancement)
         print("[AI] Generating AI insights...")
         try:
-            insights = self.generate_llm_insights(analysis_results)
+            # Get investment context from RAG if enabled
+            investment_context = ""
+            if use_rag:
+                investment_context = self.knowledge_store.get_context_for_analysis(
+                    "investment",
+                    analysis_results.get('company_info', {})
+                )
+                if investment_context:
+                    print("   [RAG] Enhanced with investment framework knowledge")
+            
+            insights = self.generate_llm_insights(analysis_results, investment_context)
             analysis_results['llm_insights'] = insights
             print(f"   [OK] AI insights generated")
             
@@ -240,6 +314,15 @@ class TickerAnalyzerAgent:
             print(f"   [FAIL] Report generation failed: {e}")
             analysis_results['report_files'] = {'error': str(e)}
         
+        # Add RAG enhancement indicators
+        if use_rag:
+            analysis_results['rag_enhanced'] = True
+            analysis_results['knowledge_context_used'] = True
+        
+        # Generate workflow visualization if requested
+        if use_workflow and WORKFLOW_AVAILABLE and self.visualizer:
+            self._generate_workflow_visualization(analysis_results, ticker)
+        
         # Analysis summary
         total_time = time.time() - start_time
         analysis_results['analysis_duration'] = f"{total_time:.2f} seconds"
@@ -250,7 +333,7 @@ class TickerAnalyzerAgent:
         
         return analysis_results
     
-    def generate_llm_insights(self, analysis_results: Dict[str, Any]) -> Dict[str, str]:
+    def generate_llm_insights(self, analysis_results: Dict[str, Any], investment_context: str = "") -> Dict[str, str]:
         """Generate AI-powered insights from the analysis results"""
         insights = {}
         
@@ -382,6 +465,31 @@ class TickerAnalyzerAgent:
             scores['risk_level'] = 'high'
         
         return scores
+    
+    def _generate_workflow_visualization(self, analysis_results: Dict[str, Any], ticker: str):
+        """Generate workflow visualization for the analysis"""
+        if not WORKFLOW_AVAILABLE or not self.visualizer:
+            return
+            
+        try:
+            print("[VISUALIZE] Generating workflow visualization...")
+            
+            # Get workflow structure
+            workflow_data = self.workflow.get_workflow_visualization()
+            
+            # Generate visualization reports
+            viz_paths = self.visualizer.generate_workflow_report(
+                workflow_data, 
+                analysis_results, 
+                ticker
+            )
+            
+            analysis_results['workflow_visualizations'] = viz_paths
+            print(f"   [OK] Workflow visualization generated")
+            
+        except Exception as e:
+            print(f"   [WARN] Workflow visualization failed: {e}")
+            analysis_results['workflow_visualizations'] = {'error': str(e)}
     
     def _reconstruct_analysis_from_cache(self, recent_analysis: Dict[str, Any]) -> Dict[str, Any]:
         """Reconstruct analysis results from cached data"""

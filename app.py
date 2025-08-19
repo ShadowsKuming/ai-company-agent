@@ -55,8 +55,17 @@ def analyze_company(
         # Run comprehensive analysis
         start_time = time.time()
         
-        with console.status(f"[bold green]Analyzing {ticker}..."):
-            analysis_result = analyze_ticker(ticker, use_llm=llm, force_new=force_new)
+        with console.status(f"[bold green]Analyzing {ticker} (RAG + Workflow Enhanced)..."):
+            # Create analyzer instance for enhanced features
+            analyzer = TickerAnalyzerAgent(use_llm=llm)
+            
+            # Run enhanced analysis with RAG and workflow
+            analysis_result = analyzer.analyze_ticker_comprehensive(
+                ticker, 
+                force_new=force_new,
+                use_workflow=True,  # Enable LangGraph workflow
+                use_rag=True        # Enable RAG enhancement
+            )
         
         analysis_time = time.time() - start_time
         
